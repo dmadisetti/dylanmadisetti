@@ -1,0 +1,279 @@
+<head>
+
+<title>I am Dylan Madisetti: a person</title>
+<meta name="description" content="Hey there world, my name is Dylan Madisetti. I live in South Carolina and I'm a software developer"/>
+<!-- 
+<meta>
+<meta>
+<meta>
+-->
+<script src="//ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24705076-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Google Plus Stuff -->
+<link href="https://plus.google.com/107049937925936087687" rel="publisher" />
+<link href="https://plus.google.com/107049937925936087687" rel="author" />
+<!-- Twitter Stuffs -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://www.dylanmadisetti.com">
+<meta name="twitter:title" content="Dylan Madisetti- I am a person.">
+<meta name="twitter:description" content="So hey this site is about me- Dylan Madisetti. Just because.">
+<meta name="twitter:image" content="http://www.dylanmadisetti.com/images/qrcode.png">
+<meta name="twitter:site" content="@dylanmadisetti">
+<meta name="twitter:creator" content="@dylanmadisetti">
+<!-- Facebook Stuffs -->
+<meta property="og:image" content="http://www.dylanmadisetti.com/images/qrcode.png"/>
+<meta property="og:title" content="Dylan Madisetti is a person. This is his site."/>
+<meta property="og:url" content="http://www.dylanmadisetti.com"/>
+<meta property="og:site_name" content="Dylan Madisetti"/>
+<!-- Bing Jazz -->
+<meta name="msvalidate.01" content="954EDDCB6DE7FF57E630FE89F47B67D3" />
+<!-- Canonical for kicks --> 
+<link rel="canonical" href="http://www.dylanmadisetti.com" />
+
+<script>
+
+window.onload = run;
+
+function run(){
+
+	{% if not path == None %}
+		scroll(document.getElementById('{{ path }}'));
+	{% endif %}
+
+	$(document).on('click', function(event, element) {
+		console.log(event.target.textContent);
+		switch(event.target.dataset[ 'action' ]){
+			case 'push':
+				event.preventDefault();
+				scroll(document.getElementById(event.target.dataset['tag']));
+				history.pushState(
+					{transition:event.target.textContent}
+					, event.target.textContent
+					, event.target.href
+				);
+			default:
+				break;
+		}
+
+	});
+}
+
+function scroll(el){
+	this.alpha = 5;
+	this.x = el.offsetLeft;
+	this.y =  el.offsetTop;
+	this.work = function(){
+		var left = (document && document.scrollLeft || document.body && document.body.scrollLeft || 0);
+		var top = (document && document.scrollTop  || document.body && document.body.scrollTop  || 0);
+
+		if(this.x == left)
+			return;
+
+
+		var x = left + (this.x-left+(9*(Math.abs(this.x - left)/(this.x - left))))/10
+		var y = 0;
+
+
+		
+
+		window.scrollTo(x,y);
+		setTimeout(this.work,10);
+	}
+
+	this.work();
+		
+}
+
+
+</script>
+
+
+<style>
+
+
+
+#about{
+	background-image: linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -o-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -moz-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -webkit-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -ms-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.33, rgb(39,40,34)),
+		color-stop(0.67, rgb(39,40,34)),
+		color-stop(0.84, rgb(70,70,70))
+	);
+}
+
+#contact{
+	background-color:#888;
+}
+
+#home{
+	/*background-color:#BBB; */
+}
+
+
+.content{
+	min-height:500px;
+	width:415px;
+	margin:0px auto;
+	padding:45px 20px;
+}
+
+footer input{
+	display:none;
+}
+
+footer a{
+	padding: 10px;
+	margin: 0;
+	min-height: 25px;
+	float:left;
+	clear:none;
+}
+
+:checked + label + a{
+	padding: 8px 10px;
+}
+
+label a,a:active,a:hover,a:visited,a:link {
+	text-decoration: none;
+	color:#FFF;
+}
+
+
+body{
+	padding:0px;
+	margin:0px;
+	background-color:#394034;
+}
+
+footer{
+	bottom:0;
+}
+
+header{
+	top:0;
+	border-bottom:1px solid #000000;
+}
+
+section{
+	margin:0px;
+	min-height:300px;
+}
+
+
+footer,header{
+	position:fixed;
+	vertical-align:top;
+	color:#FFF;
+	margin:0px;
+	padding:0px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color:#282828;
+	width:100%;
+	overflow:hidden;
+}
+
+.inner,nav{
+	line-height: 14px;
+	margin: 0 auto;
+	max-width:1250px;
+	overflow: visible;
+	min-height:45px;
+}
+
+header h1{
+	font-size: 20px;
+	text-transform:lowercase;
+	clear:none;
+	float:left;
+	margin: 15px 10px;
+}
+
+header h2{
+	font-size:14px;
+	clear:none;
+	float:left;
+	margin: 15px 5px;
+}
+
+header h3{
+	font-size:12px;
+	margin: 15px 5px;
+	clear:none;
+	float:right;
+}
+
+
+#home{
+	font-size: 2.2em;
+	color:#FFF;
+}
+
+#home h1{
+	font-size: 2.2em;
+	color:#FFF;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+</style>
+
+
+
+</head>
+<body>
+	<header itemscope itemtype="http://schema.org/Person">
+		<div class= "inner">
+			<h1 itemprop="name">
+				Dylan Madisetti |
+			</h1>
+			<h2 itemprop="jobTitle">
+				Software Developer
+			</h2>
+			<h3 itemprop="telephone">
+				(843) 557-8620
+			</h3>
+			<h3 itemprop="email">
+				contact@dylanmadisetti.com
+			</h3>
+		</div>
+	</header>
+
+
+<section>
+	{% for widget in data.widgets %}
+		{{ widget }}
+	{% endfor %}
+</section>
+
+
+	<footer itemscope itemtype="http://schema.org/SiteNavigationElement">
+		<nav>
+			{% for piece in data.pieces %}
+				<input id='{{ piece }}' type='radio' name='nav' {% if path == piece %}checked="true"{% endif %}/>
+				<label for='{{ piece }}' class='{{ piece }}'>
+					<a href="/{{ piece }}" data-action="push" data-tag="{{ piece }}"> {{ piece }} </a>
+				</label>
+			{% endfor %}
+		</nav>
+	</footer>
+
+</body>
