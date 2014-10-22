@@ -25,11 +25,11 @@ run(){
 }
 
 try(){
-
+    return
 }
 
 deploy(){
-
+    return
 }
 
 ci(){
@@ -38,7 +38,7 @@ ci(){
     return 1;
 }
 
-while getopts "h?arbdx:" opt; do
+while getopts "h?arcdx:" opt; do
     case "$opt" in
     h|\?)
         show_help
