@@ -26,6 +26,12 @@ handlers:
 - url: /.*
   script: main.app
 
+skip_files:
+- google_appengine
+- \..*
+- README.md
+- test*
+
 libraries:
 - name: jinja2
   version: latest

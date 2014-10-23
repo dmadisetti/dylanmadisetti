@@ -31,7 +31,7 @@ try(){
 }
 
 deploy(){
-    return
+    echo $PASSWORD | google_appengine/appcfg.py --email=dylan.madisetti@gmail.com --passin update ./
 }
 
 push(){
@@ -44,7 +44,7 @@ clean(){
     rm -r *.pyc;
 }
 
-while getopts "h?rpcd:" opt; do
+while getopts "h?rtpcdx:" opt; do
     case "$opt" in
     h|\?)
         show_help
@@ -52,6 +52,8 @@ while getopts "h?rpcd:" opt; do
     d)  deploy
         ;;
     r)  run
+        ;;
+    t)  try
         ;;
     p)  push
         ;;
