@@ -8,7 +8,7 @@ show_help(){
     r - run \n\
     t - test \n\
     a - run and build \n\
-    d - deploy\n\
+    s - setup\n\
     p - ci push
     c - clean
     \n\
@@ -17,7 +17,7 @@ show_help(){
 }
 
 setup(){
-    sudo pip install nose
+    pip install nose
     curl -O https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.14.zip;
     unzip -q google_appengine_1.9.14.zip;
 }
@@ -44,10 +44,12 @@ clean(){
     rm -r *.pyc;
 }
 
-while getopts "h?rtpcdx:" opt; do
+while getopts "h?rtpscdx:" opt; do
     case "$opt" in
     h|\?)
         show_help
+        ;;
+    s)  setup
         ;;
     d)  deploy
         ;;
