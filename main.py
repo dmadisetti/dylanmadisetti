@@ -1,57 +1,21 @@
 import webapp2 as webapp
 import jinja2 as jinja
 from google.appengine.api import memcache
-import os,json,urllib2
+import os, utils
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'static', 'templates')
-WIDGET_DIR = os.path.join(os.path.dirname(__file__), TEMPLATE_DIR,'widgets')
 DATA = os.path.join(os.path.dirname(__file__), TEMPLATE_DIR,'data.json')
 EXTRA = os.path.join(os.path.dirname(__file__), TEMPLATE_DIR,'extra.json')
-ASNs =  {"MIT": ("AS3","AS63")
-		,"Stanford": ("AS32","AS46749")
-		,"Google": ("AS36040","AS36492","AS36384","AS15169")
-		# This is the real USC. Go Cocks
-		,"USC": ("AS12005",)}
 
 templater = jinja.Environment(
     loader=jinja.FileSystemLoader(TEMPLATE_DIR))
-
-widgeter = jinja.Environment(
-    loader=jinja.FileSystemLoader(WIDGET_DIR))
 
 class Handler(webapp.RequestHandler):
 	def get(self,scroll=''):
 		self.response.headers['Content-Type'] = 'text/html'
 		template = templater.get_template('index.html')
-		thing = {"data":load(DATA),"extra":getExtra()}
-		print thing
-		self.response.write(template.render(data = load(DATA), extra = getExtra()))
-
-def load(jsn):
-	key = 'data%s' % jsn
-	data = memcache.get(key)
-	if not data:
-		with open(jsn) as data_file:    
-			data = json.load(data_file)
-		if not memcache.add(key, data):
-			logging.error('Memcache set failed.')
-	return data
-
-def getExtra():
-	return load(EXTRA).get(lookup(os.environ["REMOTE_ADDR"]),[])
-
-def lookup(ip):
-	return match(get("http://ipinfo.io/%s/org" % ip))
-
-def get(url):
-	return urllib2.urlopen(url, None, 10).read().split(" ")[0]
-
-def match(org):
-	for asn in ASNs:
-		for n in ASNs[asn]:
-			if org == n:
-				return asn
-	return ""
+		requester = self.request.get("ip",os.environ["REMOTE_ADDR"]) if utils.isLocal() else os.environ["REMOTE_ADDR"]
+		self.response.write(template.render(data = utils.load(DATA), extra = utils.getExtra(requester,EXTRA)))
 
 class CacheKiller(webapp.RequestHandler):
 	def get(self):

@@ -33,6 +33,7 @@ skip_files:
 - \..*
 - README.md
 - test*
+- static/shader/[^(deploy)]
 
 libraries:
 - name: jinja2

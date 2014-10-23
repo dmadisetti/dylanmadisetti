@@ -1,18 +1,22 @@
 {
-    "MIT": {
-        "image": "/images/logo.png",
-        "text": "YO yoy yoy yoy"
-    },
-    "Stanford": {
-        "image": "/images/logo.png",
-        "text": "YO yoy yoy yoy"
-    },
-    "Google": {
-        "image": "/images/logo.png",
-        "text": "YO yoy yoy yoy"
-    },
-    "USC": {
-        "image": "/images/logo.png",
-        "text": "YO yoy yoy yoy"
-    }
+    "MIT": [{
+        "title": "The Massachusetts Institution of Technology looking at my site?",
+        "image": "/images/mit.png",
+        "text": "Hey! Glad you're here! If you're not from MIT, then my IP targeting might be off. Drop me a line!"
+    }],
+    "Stanford": [{
+        "title": "Stanford right?",
+        "image": "/images/stanford.png",
+        "text": "Hey Stanford. What's up? I threw you guys in my targeted IPs just for kicks."
+    }],
+    "Google": [{
+        "title": "Google oh Google! Oh Googly Google.",
+        "image": "/images/google.png",
+        "text": "Thank's for dropping by my site! Not from google? Submit a <a href='https://github.com/dmadisetti/dylanmadisetti/issues/new?title=Regarding+IP+Hack&body=Your+stuff+is+broken+dude.'>bug</a>"
+    }],
+    "USC": [{
+        "title": "Forver to thee.",
+        "image": "/images/usc.jpg",
+        "text": "Gamecocks! Everyone know's we're the real USC. Not from Carolina? My IP targeting might be off. Drop me a line."
+    }]
 }

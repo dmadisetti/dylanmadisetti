@@ -1,34 +1,32 @@
-.content{
-	min-height:500px;
-	width:415px;
-	margin:0px auto;
-	padding:45px 20px;
-}
-
 label a,a:active,a:hover,a:visited,a:link {
-	text-decoration: none;
+
 	color:#FFF;
+	text-decoration: none;
+
 }
 
 
 body{
-	padding:0px;
-	margin:0px;
+
 	background-color:#394034;
+	margin:0px;
+	padding:0px;
+
 }
 
 #background {
 
-	width: 100%;
 	height: 100%;
 	position: fixed;
-	z-index: -1;
 	top:0;
+	width: 100%;
+	z-index: -1;
 
 }
 
 section{
 
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin:0px;
 
 }
@@ -57,22 +55,28 @@ header {
 }
 
 header h1{
-	font-size: 20px;
-	text-transform:lowercase;
+
 	clear:none;
+	font-size: 20px;
 	margin: 15px 10px;
+	text-transform:lowercase;
+
 }
 
 header h2{
-	font-size:14px;
+
 	clear:none;
+	font-size:14px;
 	margin: 15px 5px;
+
 }
 
 header h3{
+
+	clear:none;
 	font-size:12px;
 	margin: 15px 5px;
-	clear:none;
+
 }
 
 
@@ -88,31 +92,48 @@ header h3{
 }
 
 .pull-left{
+
 	float: left;
+
 }
 
 .pull-right{
+
 	float: right;
+
 }
 
 .container {
-	width: 1200px;
+
 	display: block;
 	margin: 75px auto 0 auto;  
+	width: 1200px;
+
+}
+
+.content{
+
+	margin:0px auto;
+	min-height:500px;
+	padding:45px 20px;
+	width:415px;
+
 }
 
 .ybr {
+
+	/*background-image: url('/images/track.png');
+	background-repeat: repeat-y;*/
 	display: block;
-	width: 1250px;
 	margin: 0 auto;
-	background-image: url('track.png');
-	background-repeat: repeat-y;
+	width: 1250px;
+
 }
 
 .main {
 
-	width: 300px;
 	margin-top: -4px;
+	width: 300px;
 
 }
 .bubble {
@@ -126,20 +147,22 @@ header h3{
 }
 
 .said {
+
 	display: block;
 	height: 308px;
 	margin-left: 308px;
 	position: relative;
 	top: -308px;
+
 }
 
 .rumored {
 
 	display: block;
 	height: 93px;
-	margin-left: 200px;
+	margin-left: 250px;
 	position: relative;
-	top: -150px;
+	top: -175px;
 
 }
 
@@ -156,23 +179,25 @@ header h3{
 
 }
 .pointer {
+
 	top: 80px;
+
 }
 .speech {
 
 	background-color: #EFF0EC;
 	border-radius: 2px;
 	color: #333;
+	display: block;
 	height: 100%;
 	margin-left: 15px;
-	display: block;
 	
 }
 
 .small {
 
 	margin-right: 100px;
-  padding: 10px; 
+	padding: 10px; 
 
 }
 
@@ -184,6 +209,8 @@ header h3{
 
 .little {
 	
-	margin: 0 103px;
+	height: 160px;
+	margin: 0 70px;
+	width: 160px;
 
 }
