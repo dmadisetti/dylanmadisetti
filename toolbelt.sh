@@ -36,7 +36,9 @@ deploy(){
 
 push(){
     try || exit 1;
-    deploy;
+    git branch | grep "\*\ [^(master)\]" || {
+        deploy;
+    }
 }
 
 clean(){
