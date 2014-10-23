@@ -1,0 +1,129 @@
+#about{
+	background-image: linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -o-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -moz-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -webkit-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+	background-image: -ms-linear-gradient(bottom, rgb(39,40,34) 33%, rgb(39,40,34) 67%, rgb(70,70,70) 84%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.33, rgb(39,40,34)),
+		color-stop(0.67, rgb(39,40,34)),
+		color-stop(0.84, rgb(70,70,70))
+	);
+}
+
+#contact{
+	background-color:#888;
+}
+
+#home{
+	/*background-color:#BBB; */
+}
+
+
+.content{
+	min-height:500px;
+	width:415px;
+	margin:0px auto;
+	padding:45px 20px;
+}
+
+footer input{
+	display:none;
+}
+
+footer a{
+	padding: 10px;
+	margin: 0;
+	min-height: 25px;
+	float:left;
+	clear:none;
+}
+
+:checked + label + a{
+	padding: 8px 10px;
+}
+
+label a,a:active,a:hover,a:visited,a:link {
+	text-decoration: none;
+	color:#FFF;
+}
+
+
+body{
+	padding:0px;
+	margin:0px;
+	background-color:#394034;
+}
+
+footer{
+	bottom:0;
+}
+
+header{
+	top:0;
+	border-bottom:1px solid #000000;
+}
+
+section{
+	margin:0px;
+	min-height:300px;
+}
+
+
+footer,header{
+	position:fixed;
+	vertical-align:top;
+	color:#FFF;
+	margin:0px;
+	padding:0px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color:#282828;
+	width:100%;
+	overflow:hidden;
+}
+
+.inner,nav{
+	line-height: 14px;
+	margin: 0 auto;
+	max-width:1250px;
+	overflow: visible;
+	min-height:45px;
+}
+
+header h1{
+	font-size: 20px;
+	text-transform:lowercase;
+	clear:none;
+	float:left;
+	margin: 15px 10px;
+}
+
+header h2{
+	font-size:14px;
+	clear:none;
+	float:left;
+	margin: 15px 5px;
+}
+
+header h3{
+	font-size:12px;
+	margin: 15px 5px;
+	clear:none;
+	float:right;
+}
+
+
+#home{
+	font-size: 2.2em;
+	color:#FFF;
+}
+
+#home h1{
+	font-size: 2.2em;
+	color:#FFF;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
