@@ -9,4 +9,5 @@ script:
 
 env:
   global:
-    secure: XwaZKRAKgw+puDiEwbr2++LlX/otHCKhXDhFe5/nDcRACOE1ZwvX5HZRgvvPRoPpLEgLRvBSKDonEztvmUkSCOgFK/VeAryaygNfxX0f9holG6GE2Ypy6KxUu+MKcyEejeskn+k0OuQFBSDlVS85URjyk3wuSjolCHSrWeFxLNE=
+    - secure: XwaZKRAKgw+puDiEwbr2++LlX/otHCKhXDhFe5/nDcRACOE1ZwvX5HZRgvvPRoPpLEgLRvBSKDonEztvmUkSCOgFK/VeAryaygNfxX0f9holG6GE2Ypy6KxUu+MKcyEejeskn+k0OuQFBSDlVS85URjyk3wuSjolCHSrWeFxLNE=
+    - GAE=google_appengine_1.9.14

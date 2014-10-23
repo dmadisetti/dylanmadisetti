@@ -17,8 +17,8 @@ show_help(){
 }
 
 setup(){
-    pip install nose
-    curl -O https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.14.zip;
+    pip install nosegae
+    curl -O https://storage.googleapis.com/appengine-sdks/featured/$GAE.zip;
     unzip -q google_appengine_1.9.14.zip;
 }
 
@@ -27,7 +27,7 @@ run(){
 }
 
 try(){
-    ./test.py;
+    nosetests --with-gae --gae-lib-root=google_appengine --gae-application=./;
 }
 
 deploy(){
