@@ -19,7 +19,7 @@ show_help(){
 setup(){
     pip install nosegae
     curl -O https://storage.googleapis.com/appengine-sdks/featured/$GAE.zip;
-    unzip -q google_appengine_1.9.14.zip;
+    unzip -q $GAE.zip;
 }
 
 run(){
@@ -42,8 +42,8 @@ push(){
 }
 
 clean(){
-    rm google_appengine*;
-    rm -r *.pyc;
+    rm -rf google_appengine*;
+    rm -rf *.pyc;
 }
 
 while getopts "h?rtpscdx:" opt; do
