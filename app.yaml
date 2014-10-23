@@ -7,8 +7,8 @@ threadsafe: true
 handlers:
 - url: /images
   static_dir: static/images
-- url: /stylesheets
-  static_dir: static/stylesheets
+- url: /styles
+  static_dir: static/styles
 - url: /scripts
   static_dir: static/scripts
 - url: /google91792fe8808f769d.html

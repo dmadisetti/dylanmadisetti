@@ -18,12 +18,13 @@ Here's my nifty `toolbelt.sh`
 ```
     Why Hello there! You must be looking for help
 
-    The Flags: 
-    r - run 
-    t - test 
-    a - run and build 
+    The Flags:
+    r - run
+    t - test
+    s - setup
     d - deploy
-    c - continous integration
+    p - ci push
+    c - clean
 
     Chain em together as you see fit
 ```

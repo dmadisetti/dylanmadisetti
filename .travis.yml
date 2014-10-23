@@ -1,12 +1,12 @@
 language: python
 python:
 - '2.7'
-- '3.3'
-- pypy
+
 install:
 - ./toolbelt.sh -s
 script:
 - ./toolbelt.sh -p
+
 env:
   global:
     secure: XwaZKRAKgw+puDiEwbr2++LlX/otHCKhXDhFe5/nDcRACOE1ZwvX5HZRgvvPRoPpLEgLRvBSKDonEztvmUkSCOgFK/VeAryaygNfxX0f9holG6GE2Ypy6KxUu+MKcyEejeskn+k0OuQFBSDlVS85URjyk3wuSjolCHSrWeFxLNE=

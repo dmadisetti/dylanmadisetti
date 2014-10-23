@@ -7,7 +7,7 @@ show_help(){
     The Flags: \n\
     r - run \n\
     t - test \n\
-    a - run and build \n\
+    d - deploy \n\
     s - setup\n\
     p - ci push
     c - clean
@@ -35,7 +35,7 @@ deploy(){
 }
 
 push(){
-    try;
+    try || exit 1;
     deploy;
 }
 
