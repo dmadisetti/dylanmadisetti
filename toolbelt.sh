@@ -23,7 +23,7 @@ setup(){
 }
 
 run(){
-    google_appengine/dev_appserver.py ./app.yaml;
+    google_appengine/dev_appserver.py --allow_skipped_files 1 ./app.yaml;
 }
 
 try(){
