@@ -10,7 +10,9 @@ handlers:
 - url: /styles
   static_dir: static/styles
 - url: /scripts
-  static_dir: static/scripts
+  static_dir: static/shader
+- url: /shader
+  static_dir: static/flat-surface-shader
 - url: /google91792fe8808f769d.html
   static_files: static/google91792fe8808f769d.html
   upload: static/google91792fe8808f769d.html

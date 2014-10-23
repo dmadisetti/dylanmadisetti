@@ -1,0 +1,3 @@
+[submodule "static/shader"]
+	path = static/shader
+	url = git@github.com:dmadisetti/flat-surface-shader.git
