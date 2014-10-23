@@ -3,7 +3,7 @@ Dylan Madisetti - A Personal Website
 
 [![Build Status](https://travis-ci.org/dmadisetti/dylanmadisetti.png)](https://travis-ci.org/dylanmadisetti/noughtscrosses)
 
-Pretty basic stuff.
+Pretty basic stuff: V2.0 (on GAE at least)
 
 Part resume, part project; I don't think there's another Dylan Madisetti out there, but also part domain squatting
 

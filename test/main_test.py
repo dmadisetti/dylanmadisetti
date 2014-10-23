@@ -7,7 +7,7 @@ class DemoTestCase(unittest.TestCase):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
 
-    def test_choice(self):
+    def test_test(self):
         self.assertTrue(1 == 1)
 
     def tearDown(self):
