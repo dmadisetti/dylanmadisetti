@@ -16,16 +16,16 @@ Are you really going to clone this?
 Here's my nifty `toolbelt.sh`
 
 ```
-    Why Hello there! You must be looking for help\n\
-    \n\
-    The Flags: \n\
-    r - run \n\
-    t - test \n\
-    a - run and build \n\
-    d - deploy\n\
+    Why Hello there! You must be looking for help
+
+    The Flags: 
+    r - run 
+    t - test 
+    a - run and build 
+    d - deploy
     c - continous integration
-    \n\
-    Chain em together as you see fit \n\
+
+    Chain em together as you see fit
 ```
 
 

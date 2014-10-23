@@ -3,14 +3,11 @@ import jinja2 as jinja
 from google.appengine.api import memcache
 import os,json,urllib2
 
-#class template():
-#	__init__(self):
-
 templater = jinja.Environment(
-    loader=jinja.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')))
+    loader=jinja.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'static', 'templates')))
 
 widgeter = jinja.Environment(
-    loader=jinja.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates','widgets')))
+    loader=jinja.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'static', 'templates','widgets')))
 
 
 class Handler(webapp.RequestHandler):
@@ -63,6 +60,7 @@ def Handle404(request, response, exception):
 	template = templater.get_template('404.html')
 	response.write(template.render({}))
 	return
+
 					
 app = webapp.WSGIApplication([('/', Handler),('/killcache',CacheKiller)],debug=True)
 app.error_handlers[404] = Handle404

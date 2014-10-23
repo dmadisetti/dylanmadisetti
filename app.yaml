@@ -6,23 +6,23 @@ threadsafe: true
 
 handlers:
 - url: /images
-  static_dir: images
+  static_dir: static/images
 - url: /stylesheets
-  static_dir: stylesheets
+  static_dir: static/stylesheets
 - url: /scripts
-  static_dir: scripts
+  static_dir: static/scripts
 - url: /google91792fe8808f769d.html
-  static_files: google91792fe8808f769d.html
-  upload: google91792fe8808f769d.html
+  static_files: static/google91792fe8808f769d.html
+  upload: static/google91792fe8808f769d.html
 - url: /sitemap.xml
-  static_files: sitemap.xml
-  upload: sitemap.xml
+  static_files: static/sitemap.xml
+  upload: static/sitemap.xml
 - url: /robots.txt
-  static_files: robots.txt
-  upload: robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
 - url: /BingSiteAuth.xml
-  static_files: BingSiteAuth.xml
-  upload: BingSiteAuth.xml
+  static_files: static/BingSiteAuth.xml
+  upload: static/BingSiteAuth.xml
 - url: /.*
   script: main.app
 

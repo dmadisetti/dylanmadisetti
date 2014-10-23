@@ -9,13 +9,15 @@ show_help(){
     t - test \n\
     a - run and build \n\
     d - deploy\n\
-    c - continous integration
+    p - ci push
+    c - clean
     \n\
     Chain em together as you see fit \n\
     "
 }
 
 setup(){
+    sudo pip install nose
     curl -O https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.14.zip;
     unzip -q google_appengine_1.9.14.zip;
 }
@@ -25,20 +27,24 @@ run(){
 }
 
 try(){
-    return
+    ./test.py;
 }
 
 deploy(){
     return
 }
 
-ci(){
+push(){
     try;
     deploy;
-    return 1;
 }
 
-while getopts "h?arcdx:" opt; do
+clean(){
+    rm google_appengine*;
+    rm -r *.pyc;
+}
+
+while getopts "h?rpcd:" opt; do
     case "$opt" in
     h|\?)
         show_help
@@ -47,9 +53,9 @@ while getopts "h?arcdx:" opt; do
         ;;
     r)  run
         ;;
-    b)  build
+    p)  push
         ;;
-    c)  ci
+    c)  clean
         ;;
     esac
 done

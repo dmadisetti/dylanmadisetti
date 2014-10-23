@@ -6,7 +6,7 @@ python:
 
 
 install:
-- ./toolbelt -s
+- ./toolbelt.sh -s
 
 script:
-- ./toolbelt - c
+- ./toolbelt.sh - c
