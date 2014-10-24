@@ -39,44 +39,59 @@
 		<link rel="canonical" href="http://www.dylanmadisetti.com" />
 		<!-- Styles -->
 		<link rel="stylesheet" type="text/css" href="/styles/the.css">
+		<link rel="stylesheet" href="/styles/style.css">
+		<!-- Scripts -->
+		<script type="text/javascript" src="/shader/deploy/fss.js"></script>
 	</head>
-<body>
-	<header itemscope itemtype="http://schema.org/Person">
-		<div class= "inner">
-			<h1 itemprop="name">
-				Dylan Madisetti |
-			</h1>
-			<h2 itemprop="jobTitle">
-				Software Developer
-			</h2>
-			<h3 itemprop="telephone">
-				(843) 557-8620
-			</h3>
-			<h3 itemprop="email">
-				contact@dylanmadisetti.com
-			</h3>
-		</div>
-	</header>
+	<body>
+		<header itemscope="" itemtype="http://schema.org/Person">
+			<div class="inner">
+				<span class="pull-left block-line">
+					<h1 itemprop="name" class="block">
+						Dylan Madisetti |
+					</h1>
+					<h2 itemprop="jobTitle" class="block">
+						Software Developer
+					</h2>
+				</span>
+				<span class="pull-right block-line">
+					<h3 itemprop="email" class="block">
+						contact@dylanmadisetti.com
+					</h3>
+					<h3 itemprop="telephone" class="block">
+						(843) 557-8620
+					</h3>
+				</span>
+			</div>
+		</header>
+		<article class="container">
+			<section>
+				<img class="main bubble" src="http://photos-g.ak.instagram.com/hphotos-ak-xpf1/10354457_1430096060593774_1481109448_n.jpg">
+				<div class="block said">
+					<span class="pointer arrow-left">
+					</span>
+					<span class="large speech">
+						<h1 class="shout">So.. Hey.</h1>
+						<p class="hire">My name is Dylan Madisetti. I'm a software developer, and you should totally hire me.</p>
+						{% include "widgets/icons.html" %}							
+					</span>
+				</div>
+			</section>
+
+			{%for slide in extra%}
+				{% include "widgets/slide.html" %}
+			{%endfor%}
+
+			{%for slide in data%}
+				{% include "widgets/slide.html" %}
+			{%endfor%}
 
 
-	<section>
-		{% for widget in data.widgets %}
-			{{ widget }}
-		{% endfor %}
-	</section>
+		</article>
 
-
-	<footer itemscope itemtype="http://schema.org/SiteNavigationElement">
-		<nav>
-			{% for piece in data.pieces %}
-				<input id='{{ piece }}' type='radio' name='nav' {% if path == piece %}checked="true"{% endif %}/>
-				<label for='{{ piece }}' class='{{ piece }}'>
-					<a href="/{{ piece }}" data-action="push" data-tag="{{ piece }}"> {{ piece }} </a>
-				</label>
-			{% endfor %}
-		</nav>
-	</footer>
-
-	<!-- Scripts -->
-	<script src="/scripts/the.js"></script>
-</body>
+		<footer>
+			{% include "widgets/icons.html" %}
+		</footer>
+		<script type="text/javascript" src="/scripts/the.js"></script>
+	</body>
+</html>

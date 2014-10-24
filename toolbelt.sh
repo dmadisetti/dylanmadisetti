@@ -18,12 +18,13 @@ show_help(){
 
 setup(){
     pip install nosegae
+    pip install webtest
     curl -O https://storage.googleapis.com/appengine-sdks/featured/$GAE.zip;
-    unzip -q google_appengine_1.9.14.zip;
+    unzip -q $GAE.zip;
 }
 
 run(){
-    google_appengine/dev_appserver.py ./app.yaml;
+    google_appengine/dev_appserver.py --allow_skipped_files 1 ./app.yaml;
 }
 
 try(){
@@ -36,12 +37,14 @@ deploy(){
 
 push(){
     try || exit 1;
-    deploy;
+    git branch | grep "\*\ [^(master)\]" || {
+        deploy;
+    }
 }
 
 clean(){
-    rm google_appengine*;
-    rm -r *.pyc;
+    rm -rf google_appengine*;
+    rm -rf *.pyc;
 }
 
 while getopts "h?rtpscdx:" opt; do

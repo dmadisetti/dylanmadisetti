@@ -3,7 +3,7 @@ Dylan Madisetti - A Personal Website
 
 [![Build Status](https://travis-ci.org/dmadisetti/dylanmadisetti.png)](https://travis-ci.org/dylanmadisetti/noughtscrosses)
 
-Pretty basic stuff.
+Pretty basic stuff: V2.0 (on GAE at least)
 
 Part resume, part project; I don't think there's another Dylan Madisetti out there, but also part domain squatting
 
@@ -32,12 +32,11 @@ Here's my nifty `toolbelt.sh`
 
 Objectives:
 
-- IP target
-- Remove weird service I wrote 3 years ago
-- Make more than just a QR code?
+- IP target - `Check`
+- Remove weird service I wrote 3 years ago - `Check`
+- Make more than just a QR code? - `Check`
 
 Todo:
 
-- IP Target
-- Tests
-- Rewrite
+- Could Clean
+- Could incorporate Selenium/ Phantom JS for more testing

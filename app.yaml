@@ -1,5 +1,5 @@
 application: dylanmadisetti
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -11,6 +11,10 @@ handlers:
   static_dir: static/styles
 - url: /scripts
   static_dir: static/scripts
+- url: /shader
+  static_dir: static/shader
+- url: /resume
+  static_dir: static/resumes
 - url: /google91792fe8808f769d.html
   static_files: static/google91792fe8808f769d.html
   upload: static/google91792fe8808f769d.html
@@ -31,6 +35,7 @@ skip_files:
 - \..*
 - README.md
 - test*
+- static/shader/[^(deploy)]
 
 libraries:
 - name: jinja2
