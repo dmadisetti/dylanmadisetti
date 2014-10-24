@@ -1,0 +1,25 @@
+
+* Part resume, part project; I don't think there's another Dylan Madisetti out there, but also part domain squatting
+*
+* .__            __            
+* |  |__ ___  __|  | __  ______
+* |  |  \\  \/  /  |/ / /  ___/
+* |   Y  \>    <|    <  \___ \ 
+* |___|  /__/\_ \__|_ \/____  >
+*     \/      \/    \/     \/ 
+* Hacked together by Dylan Madisetti
+*
+* @author  Dylan Madisetti
+* @version 2.0, Oct 23, 2014
+* @source  https://github.com/dmadisetti/dylanmadisetti
+* @website http://www.dylanmadisetti.com
+
+
+Awesomesauce:
+	- Jinja
+	- webapp2
+	- nose
+	- GAE
+	- Travis
+	- ipinfo.io
+	- flat-surface-shader

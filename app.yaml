@@ -24,6 +24,9 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+- url: /humans.txt
+  static_files: static/humans.txt
+  upload: static/humans.txt
 - url: /BingSiteAuth.xml
   static_files: static/BingSiteAuth.xml
   upload: static/BingSiteAuth.xml
