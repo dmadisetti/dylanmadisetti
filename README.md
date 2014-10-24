@@ -1,7 +1,7 @@
 Dylan Madisetti - A Personal Website
 =========
 
-[![Build Status](https://travis-ci.org/dmadisetti/dylanmadisetti.png)](https://travis-ci.org/dylanmadisetti/noughtscrosses)
+[![Build Status](https://travis-ci.org/dmadisetti/dylanmadisetti.png)](https://travis-ci.org/dylanmadisetti/dylanmadisetti)
 
 Pretty basic stuff: V2.0 (on GAE at least)
 
