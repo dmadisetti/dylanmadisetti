@@ -1,7 +1,7 @@
 label a,a:active,a:hover,a:visited,a:link {
 
-	color:#FFF;
-	text-decoration: none;
+	color:#555;
+	text-decoration: underline;
 
 }
 
@@ -34,7 +34,6 @@ section{
 header {
 	top:0;
 	border-bottom:1px solid #000000;
-	position:fixed;
 	vertical-align:top;
 	color:#FFF;
 	margin:0px;
@@ -79,12 +78,12 @@ header h3{
 
 }
 
-
-.slide{
-	
-	position: relative;
-
+.block-line{
+	display: initial;
+	width: 100%;
+	text-align: center;
 }
+
 .block {
 
 	display: inline-block;
@@ -107,7 +106,7 @@ header h3{
 
 	display: block;
 	margin: 75px auto 0 auto;  
-	width: 1200px;
+	max-width: 1200px;
 
 }
 
@@ -130,12 +129,6 @@ header h3{
 
 }
 
-.main {
-
-	margin-top: -4px;
-	width: 300px;
-
-}
 .bubble {
 
 	border-radius: 100%;
@@ -146,21 +139,10 @@ header h3{
 
 }
 
-.said {
+.said, .rumored {
 
-	display: block;
-	height: 308px;
-	margin-left: 308px;
-	position: relative;
-	top: -308px;
-
-}
-
-.rumored {
-
-	display: block;
 	height: 93px;
-	margin-left: 250px;
+	margin-left: 205px;
 	position: relative;
 	top: -175px;
 
@@ -174,29 +156,50 @@ header h3{
 	display: block; 
 	height: 0;
 	position: relative;
-	top: 154px;
+	top: 80px;
 	width: 0;
 
 }
-.pointer {
 
-	top: 80px;
-
-}
 .speech {
 
 	background-color: #EFF0EC;
 	border-radius: 2px;
 	color: #333;
 	display: block;
-	height: 100%;
-	margin-left: 15px;
+	min-height: 100%;
+	margin: 0 15px;
 	
+}
+
+.shout {
+
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 2.2em;
+	margin: 0;
+	padding-top: 15px;
+	text-align: center;
+
+}
+
+.hire {
+
+	margin: 0 30px;
+	text-align: center;
+
+}
+
+.icons{
+
+	display: block;
+	height: 50px;
+	margin-top: 15px;
+
 }
 
 .small {
 
-	margin-right: 100px;
+	margin-right: 35px;
 	padding: 10px; 
 
 }
@@ -207,10 +210,110 @@ header h3{
 
 }
 
-.little {
+.main,.little {
 	
 	height: 160px;
-	margin: 0 70px;
+	margin: 0 70px 0 35px;
 	width: 160px;
 
+}
+
+footer{
+
+	background-color: #282828;
+	bottom: 0;
+	font-size: 3em;
+	float: left;
+	height: 100px;
+	position: relative;
+	width: 100%;
+
+}
+
+@media screen and (min-width: 675px) {
+
+	header{
+
+		position: fixed;
+	
+	}
+
+	.block-line{
+
+		display: inline-block;
+		width: initial;
+		text-align: center;
+
+	}
+
+	.small {
+
+		margin-right: 75px;
+
+	}
+}
+
+@media screen and (min-width: 950px) {
+	.large{
+
+		font-size: 2.2em;
+		height: 90%;
+		margin: 0 15px;
+		width: initial;
+
+	}
+
+
+	.small {
+
+		margin-right: 100px;
+
+	}
+
+	.pointer {
+
+		top: 154px;
+
+	}
+
+	.main {
+
+		height: 300px;
+		margin-top: -4px;
+		margin: 0;
+		width: 300px;
+
+	}
+
+	.said {
+
+		height: 308px;
+		margin-left: 308px;
+		top: -308px;
+
+	}
+	
+	.rumored {
+
+		margin-left: 235px;
+	
+	}
+	
+	.said, .rumored {
+
+		display: block;
+	
+	}
+	
+	.slide {
+	
+		position: relative;
+	
+	}
+	
+	.little {
+		
+		margin: 0 70px;
+
+	}
 }

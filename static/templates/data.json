@@ -1,5 +1,13 @@
 [{
     "title": "Former Boomtowner",
     "image": "/images/boomtown.png",
-    "text": "YO yoy yoy yoy"
+    "text": "I spent around 2 years Charleston working with software. During my time there I had the privilege to work with Boomtown, an <a target='_blank' href='http://boomtownroi.com/boomtown-is-ranked-8th-fastest-growing-software-company-on-inc.-500-5000-li/'>Inc 500 company</a>, as a developer. I had a <a target='_blank' href='http://www.thecassinagroup.com/humans.txt'>great time</a>."
+}, {
+    "title": "Swam with a whale once. That was pretty cool.",
+    "image": "/images/whale.jpg",
+    "text": "Growing up in the Caribbean has it's perks, along with amazing coral reefs and pretty fish, we also have whales. I'm fairly passionate about keeping our waters clean, and have been a diver since the age of 10. This picture (<a target='_blank' href='http://nypost.com/2011/04/08/hes-ready-for-his-close-up/'>also this one</a>) was taken under permit off of the coast of Dominica, <a target='_blank' href='http://images-dominica.com/'>photo credits to my dad</a>."
+}, {
+    "title": "Grew up in the Caribbean and started programming around age 14",
+    "image": "/images/waterfall.jpg",
+    "text": "I've most of my life on the <a target='_blank' href='http://www.dominica.dm/'>island of Dominica</a>. I loved it; had a great childhood. Within that time I was exposed to the wonders of the internet and the power of programming. Waterfalls are pretty cool, but so are computers."
 }]

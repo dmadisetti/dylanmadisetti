@@ -39,13 +39,14 @@
 		<link rel="canonical" href="http://www.dylanmadisetti.com" />
 		<!-- Styles -->
 		<link rel="stylesheet" type="text/css" href="/styles/the.css">
+		<link rel="stylesheet" href="/styles/style.css">
 		<!-- Scripts -->
 		<script type="text/javascript" src="/shader/deploy/fss.js"></script>
 	</head>
 	<body>
 		<header itemscope="" itemtype="http://schema.org/Person">
 			<div class="inner">
-				<span class="block pull-left">
+				<span class="pull-left block-line">
 					<h1 itemprop="name" class="block">
 						Dylan Madisetti |
 					</h1>
@@ -53,7 +54,7 @@
 						Software Developer
 					</h2>
 				</span>
-				<span class="block pull-right">
+				<span class="pull-right block-line">
 					<h3 itemprop="email" class="block">
 						contact@dylanmadisetti.com
 					</h3>
@@ -63,49 +64,34 @@
 				</span>
 			</div>
 		</header>
-		<span class="ybr">
-			<article class="container">
-				<section>
-					<img class="main bubble" src="http://photos-g.ak.instagram.com/hphotos-ak-xpf1/10354457_1430096060593774_1481109448_n.jpg">
-					<div class="block said">
-						<span class="arrow-left">
-						</span>
-						<p class="large speech"></p>
-					</div>
-				</section>
+		<article class="container">
+			<section>
+				<img class="main bubble" src="http://photos-g.ak.instagram.com/hphotos-ak-xpf1/10354457_1430096060593774_1481109448_n.jpg">
+				<div class="block said">
+					<span class="pointer arrow-left">
+					</span>
+					<span class="large speech">
+						<h1 class="shout">So.. Hey.</h1>
+						<p class="hire">My name is Dylan Madisetti. I'm a software developer, and you should totally hire me.</p>
+						{% include "widgets/icons.html" %}							
+					</span>
+				</div>
+			</section>
 
-				{%for slide in extra%}
-				<section class="slide">
-					<img class="little bubble" src="{{slide.image}}">
-					<div class="block rumored">
-						<span class="pointer arrow-left">
-						</span>
-						<span class="small speech">
-							<h4>{{slide.title}}</h4>
-							<p>{{slide.text}}</p>
-						</span>
-					</div>
-				</section>
-				{%endfor%}
+			{%for slide in extra%}
+				{% include "widgets/slide.html" %}
+			{%endfor%}
 
-				{%for slide in data%}
-				<section class="slide">
-					<img class="little bubble" src="{{slide.image}}">
-					<div class="block rumored">
-						<span class="pointer arrow-left">
-						</span>
-						<span class="small speech">
-							<h4>{{slide.title}}</h4>
-							<p>{{slide.text}}</p>
-						</span>
-					</div>
-				</section>
-				{%endfor%}
+			{%for slide in data%}
+				{% include "widgets/slide.html" %}
+			{%endfor%}
 
 
-			</article>
-		</span>
+		</article>
 
+		<footer>
+			{% include "widgets/icons.html" %}
+		</footer>
 		<script type="text/javascript" src="/scripts/the.js"></script>
 	</body>
 </html>

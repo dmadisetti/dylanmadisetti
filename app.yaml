@@ -13,6 +13,8 @@ handlers:
   static_dir: static/scripts
 - url: /shader
   static_dir: static/shader
+- url: /resume
+  static_dir: static/resumes
 - url: /google91792fe8808f769d.html
   static_files: static/google91792fe8808f769d.html
   upload: static/google91792fe8808f769d.html

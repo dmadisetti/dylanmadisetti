@@ -32,12 +32,11 @@ Here's my nifty `toolbelt.sh`
 
 Objectives:
 
-- IP target
-- Remove weird service I wrote 3 years ago
-- Make more than just a QR code?
+- IP target - `Check`
+- Remove weird service I wrote 3 years ago - `Check`
+- Make more than just a QR code? - `Check`
 
 Todo:
 
-- IP Target
-- Tests
-- Rewrite
+- Could Clean
+- Could incorporate Selenium/ Phantom JS for more testing
