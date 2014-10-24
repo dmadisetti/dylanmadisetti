@@ -18,6 +18,7 @@ show_help(){
 
 setup(){
     pip install nosegae
+    pip install webtest
     curl -O https://storage.googleapis.com/appengine-sdks/featured/$GAE.zip;
     unzip -q $GAE.zip;
 }
