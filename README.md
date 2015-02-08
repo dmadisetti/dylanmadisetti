@@ -7,7 +7,7 @@ Pretty basic stuff: V2.0 (on GAE at least)
 
 Part resume, part project; I don't think there's another Dylan Madisetti out there, but also part domain squatting
 
-[Le site in question](http://www.dylanmasietti.com/)
+[Le site in question](http://www.dylanmadisetti.com/)
 
 Running
 ---
