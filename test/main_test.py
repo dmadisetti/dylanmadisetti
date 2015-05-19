@@ -1,11 +1,15 @@
 from google.appengine.ext import testbed
-import unittest, webtest, main
+import unittest
+import webtest
+import main
+
 
 class MainTestCase(unittest.TestCase):
 
     def setUp(self):
         self.testbed = testbed.Testbed()
         self.testbed.activate()
+        self.testbed.init_memcache_stub()
         self.testbed.setup_env(app_id="dylanmadisetti")
         self.testbed.setup_env(REMOTE_ADDR="127.0.0.1")
         self.testapp = webtest.TestApp(main.app)
@@ -14,13 +18,13 @@ class MainTestCase(unittest.TestCase):
         self.assertTrue(1 == 1)
 
     def test_200(self):
-        tests = ["/","/?ip=thing"]
+        tests = ["/", "/?ip=thing"]
         for test in tests:
             self.assertTrue(self.testapp.get(test).status_int == 200)
 
     def test_404(self):
         test = "/urlthatdoesnotexist"
-        self.assertTrue(self.testapp.get(test,expect_errors=True).status_int == 404)
+        self.assertTrue(self.testapp.get(test, expect_errors=True).status_int == 404)
 
     def test_targeting(self):
         tests = [
