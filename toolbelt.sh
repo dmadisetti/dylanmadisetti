@@ -33,7 +33,7 @@ try(){
 }
 
 deploy(){
-    echo $PASSWORD | google_appengine/appcfg.py --email=dylan.madisetti@gmail.com --noauth_local_webserver --passin update ./
+    echo $PASSWORD | google_appengine/appcfg.py --no_oauth2 --email=dylan.madisetti@gmail.com --passin update ./
 }
 
 push(){
