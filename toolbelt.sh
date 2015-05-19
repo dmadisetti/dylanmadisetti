@@ -19,8 +19,9 @@ show_help(){
 setup(){
     pip install nosegae
     pip install webtest
-    curl -O https://storage.googleapis.com/appengine-sdks/featured/$GAE.zip;
-    unzip -q $GAE.zip;
+    export FILE=$(curl https://storage.googleapis.com/appengine-sdks/ | grep -oP '(?<=featured/)google_appengine_[^\<]*' | head -1)
+    curl -O https://storage.googleapis.com/appengine-sdks/featured/$FILE;
+    unzip -q $FILE;
 }
 
 run(){
@@ -32,7 +33,7 @@ try(){
 }
 
 deploy(){
-    echo $PASSWORD | google_appengine/appcfg.py --email=dylan.madisetti@gmail.com --passin update ./
+    echo $PASSWORD | google_appengine/appcfg.py --email=dylan.madisetti@gmail.com --noauth_local_webserver --passin update ./
 }
 
 push(){
