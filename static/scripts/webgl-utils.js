@@ -104,21 +104,13 @@ var OTHER_PROBLEM = '' +
  * @return {WebGLRenderingContext} The created context.
  */
 var setupWebGL = function(canvas, opt_attribs) {
-  function showLink(str) {
-    var container = canvas.parentNode;
-    if (container) {
-      container.innerHTML = makeFailHTML(str);
-    }
-  };
-
   if (!window.WebGLRenderingContext) {
-    showLink(GET_A_WEBGL_BROWSER);
     return null;
   }
 
   var context = create3DContext(canvas, opt_attribs);
   if (!context) {
-    showLink(OTHER_PROBLEM);
+    return null;
   }
   return context;
 };
