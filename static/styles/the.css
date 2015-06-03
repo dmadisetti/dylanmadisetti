@@ -31,18 +31,15 @@ section{
 
 }
 
-header {
-	top:0;
-	border-bottom:1px solid #000000;
-	vertical-align:top;
+.header {
 	color:#FFF;
-	margin:0px;
-	padding:0px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background-color:#282828;
-	width:100%;
 	overflow:hidden;
-	z-index: 1;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .inner,nav{
@@ -51,18 +48,23 @@ header {
 	max-width:1250px;
 	overflow: visible;
 	min-height:45px;
+	text-align: center;
 }
 
-header h1{
+.header h1{
 
-	clear:none;
-	font-size: 20px;
+	clear: both;
+	
+
+	font-size: 36px;
 	margin: 15px 10px;
 	text-transform:lowercase;
 
+	line-height: normal;
+
 }
 
-header h2{
+.header h2{
 
 	clear:none;
 	font-size:14px;
@@ -70,7 +72,7 @@ header h2{
 
 }
 
-header h3{
+.header h3{
 
 	clear:none;
 	font-size:12px;
@@ -92,7 +94,17 @@ header h3{
 
 .pull-left{
 
-	float: left;
+	/* float: left; */
+
+	/* position: relative; */   
+
+	/* top: 50%; */   
+
+	/* -webkit-transform: translateY(-50%); */   -ms-transform: translateY(-50%);   
+
+	/* transform: translateY(-50%); */ 
+
+};
 
 }
 
@@ -218,6 +230,13 @@ header h3{
 
 }
 
+#game {
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+
 footer{
 
 	background-color: #282828;
@@ -240,9 +259,13 @@ footer{
 
 	.block-line{
 
-		display: inline-block;
-		width: initial;
-		text-align: center;
+		/* display: inline-block; */
+		
+
+		/* width: initial; */
+		
+
+		/* text-align: center; */
 
 	}
 

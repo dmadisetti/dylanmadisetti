@@ -1,293 +1,277 @@
-(function() {
+(function conway() {
 
-    window.requestAnimationFrame = function(callback, element) {
-        return window.setTimeout(function() {
-            callback();
-        }, 5);
-    };
+    // Conway; an implentation for fun
+    // 1/6/2015, Dylan Madisetti
 
-    //------------------------------
-    // Mesh Properties
-    //------------------------------
-    var MESH = {
-        width: 1.2,
-        height: 1.2,
-        depth: 10,
-        segments: 16,
-        slices: 8,
-        xRange: 0.8,
-        yRange: 0.1,
-        zRange: 1.0,
-        ambient: '#555555',
-        diffuse: '#FFFFFF',
-        speed: 0.002
-    };
+    // Just some variables
+    var game;
+    var canvas = document.getElementById("game");
+    var positionLocation;
+    var colorLocation;
+    var gl;
+    var rectangle, color;
 
-    //------------------------------
-    // Light Properties
-    //------------------------------
-    var LIGHT = {
-        count: 2,
-        xyScalar: 1,
-        zOffset: 100,
-        ambient: '#676767',
-        diffuse: '#3a3a3a',
-        speed: 0.001,
-        gravity: 1200,
-        dampening: 0.95,
-        minLimit: 10,
-        maxLimit: null,
-        minDistance: 20,
-        maxDistance: 400,
-        autopilot: false,
-        draw: true,
-        bounds: FSS.Vector3.create(),
-        step: FSS.Vector3.create(
-            Math.randomInRange(0.2, 1.0),
-            Math.randomInRange(0.2, 1.0),
-            Math.randomInRange(0.2, 1.0)
-        )
-    };
+    // Helper functions
+    var max = function(a,b){if(a>b) return a; return b;}
+    var hash = function(value){return value.x+":"+value.y;}
+    var reset = function(){
+        conway.move = {};
+        conway.show = [];
+        game = new Game();
+    
+        /** Acorn **/
+        var moves = [{x:23,y:12},
+            {x:22,y:14},
+            {x:23,y:14},
+            {x:25,y:13},
+            {x:26,y:14},
+            {x:27,y:14},
+            {x:28,y:14}];
 
-    //------------------------------
-    // Render Properties
-    //------------------------------
-    var CANVAS = 'canvas';
-    var RENDER = {
-        renderer: CANVAS
-    };
+        /** Glider **/
+        // var moves = [{x:1,y:3},
+        //    {x:2,y:3},
+        //    {x:3,y:3},
+        //    {x:3,y:2},
+        //    {x:2,y:1}];
 
-    //------------------------------
-    // Export Properties
-    //------------------------------
-    var EXPORT = {
-        width: 2000,
-        height: 1000,
-        drawLights: false,
-        minLightX: 0.4,
-        maxLightX: 0.6,
-        minLightY: 0.2,
-        maxLightY: 0.4,
-        export: function() {
-            var l, x, y, light,
-                depth = MESH.depth,
-                zOffset = LIGHT.zOffset,
-                autopilot = LIGHT.autopilot,
-                scalar = this.width / renderer.width;
-
-            LIGHT.autopilot = true;
-            LIGHT.draw = this.drawLights;
-            LIGHT.zOffset *= scalar;
-            MESH.depth *= scalar;
-
-            resize(this.width, this.height);
-
-            for (l = scene.lights.length - 1; l >= 0; l--) {
-                light = scene.lights[l];
-                x = Math.randomInRange(this.width * this.minLightX, this.width * this.maxLightX);
-                y = Math.randomInRange(this.height * this.minLightY, this.height * this.maxLightY);
-                FSS.Vector3.set(light.position, x, this.height - y, this.lightZ);
-                FSS.Vector3.subtract(light.position, center);
-            }
-
-            update();
-            render();
-
-            window.open(canvasRenderer.element.toDataURL(), '_blank');
-
-            LIGHT.draw = true;
-            LIGHT.autopilot = autopilot;
-            LIGHT.zOffset = zOffset;
-            MESH.depth = depth;
-
-            resize(container.offsetWidth, container.offsetHeight);
-        }
-    };
-
-    //------------------------------
-    // Global Properties
-    //------------------------------
-    var now, start = Date.now();
-    var old = 0;
-    var center = FSS.Vector3.create();
-    var attractor = FSS.Vector3.create();
-    var container = document.body;
-    var renderer, scene, mesh, geometry, material;
-    var webglRenderer, canvasRenderer, svgRenderer;
-    var gui, autopilotController;
-
-    //------------------------------
-    // Methods
-    //------------------------------
-    function initialise() {
-        createRenderer();
-        createScene();
-        createMesh();
-        createLights();
-        addEventListeners();
-        resize(container.offsetWidth, container.offsetHeight);
-        animate();
-    }
-
-    function createRenderer() {
-        canvasRenderer = new FSS.CanvasRenderer();
-        renderer = canvasRenderer;
-        renderer.element.id = 'background';
-        container.appendChild(renderer.element);
-    }
-
-    function createScene() {
-        scene = new FSS.Scene();
-    }
-
-    function createMesh() {
-        scene.remove(mesh);
-        renderer.clear();
-        geometry = new FSS.Plane(MESH.width * renderer.width, MESH.height * renderer.height, MESH.segments, MESH.slices);
-        material = new FSS.Material(MESH.ambient, MESH.diffuse);
-        mesh = new FSS.Mesh(geometry, material);
-        scene.add(mesh);
-
-        // Augment vertices for animation
-        var v, vertex;
-        for (v = geometry.vertices.length - 1; v >= 0; v--) {
-            vertex = geometry.vertices[v];
-            vertex.anchor = FSS.Vector3.clone(vertex.position);
-            vertex.step = FSS.Vector3.create(
-                Math.randomInRange(0.2, 1.0),
-                Math.randomInRange(0.2, 1.0),
-                Math.randomInRange(0.2, 1.0)
-            );
-            vertex.time = Math.randomInRange(0, Math.PIM2);
-        }
-    }
-
-    function createLights() {
-        var l, light;
-        for (l = scene.lights.length - 1; l >= 0; l--) {
-            light = scene.lights[l];
-            scene.remove(light);
-        }
-        renderer.clear();
-        for (l = 0; l < LIGHT.count; l++) {
-            light = new FSS.Light(LIGHT.ambient, LIGHT.diffuse);
-            light.ambientHex = light.ambient.format();
-            light.diffuseHex = light.diffuse.format();
-            scene.add(light);
-
-            // Augment light for animation
-            light.mass = Math.randomInRange(0.5, 1);
-            light.velocity = FSS.Vector3.create();
-            light.acceleration = FSS.Vector3.create();
-            light.force = FSS.Vector3.create();
-        }
-    }
-
-    function resize(width, height) {
-        renderer.setSize(width, height);
-        FSS.Vector3.set(center, renderer.halfWidth, renderer.halfHeight);
-        createMesh();
-    }
-
-    function animate() {
-        now = 25 + (document.documentElement && document.documentElement.scrollTop || document.body && document.body.scrollTop || 0);
-        if (now != old) {
-            update();
-            render();
-            //requestAnimationFrame(animate);
-        }
-    }
-
-    function update() {
-        var ox, oy, oz, l, light, v, vertex, offset = MESH.depth / 2;
-
-        var random = 0.1;
-
-        // Animate Vertices
-        for (v = geometry.vertices.length - 1; v >= 0; v--) {
-            vertex = geometry.vertices[v];
-            ox = Math.sin(vertex.time + vertex.step[0] * 25 * MESH.speed);
-            oy = Math.cos(vertex.time + vertex.step[1] * 25 * MESH.speed);
-            oz = Math.sin(vertex.time + vertex.step[2] * 25 * MESH.speed);
-            FSS.Vector3.set(vertex.position,
-                MESH.xRange * geometry.segmentWidth * ox,
-                MESH.yRange * geometry.sliceHeight * oy,
-                MESH.zRange * offset * oz - offset);
-            FSS.Vector3.add(vertex.position, vertex.anchor);
-            vertex.time += random;
-        }
-        old = now;
-
-        // Set the Geometry to dirty
-        geometry.dirty = true;
-    }
-
-    function render() {
-        renderer.render(scene);
-    }
-
-    function addEventListeners() {
-        window.addEventListener('resize', onWindowResize);
-        window.addEventListener('scroll', animate);
-    }
-
-
-    //------------------------------
-    // Callbacks
-    //------------------------------
-    function onWindowResize(event) {
-        resize(container.offsetWidth, container.offsetHeight);
-        render();
-    }
-
-    // Let there be light!
-    initialise();
-
-})();
-
-(function() {
-
-    var sliders = document.getElementsByClassName("slide");
-
-    Move = function(slider) {
-        this.slider = slider;
-        this.step = -20;
-        this.position = 0;
-    }
-    Move.prototype.a = -0.4;
-    Move.prototype.b = 8;
-    Move.prototype.c = 180;
-    Move.prototype.root = 20;
-
-    animate = function(move) {
-        var speed = (function(x) {
-            return move.a * x * x + move.b * x + move.c
-        })(move.step++);
-        var end = move.step == move.root;
-
-        console.log((end ? move.c : speed) + "px");
-        move.slider.style.bottom = (end ? move.c : speed) + "px"
-
-        if (!end) {
-            window.setTimeout((function(move) {
-                return function() {
-                    animate(move)
-                }
-            })(move), 8);
-        }
-    };
-
-    initialise = function() {
-        for (var i = sliders.length - 1; i >= 0; i--) {
-            window.setTimeout((function(move) {
-                return function() {
-                    animate(move)
-                }
-            })(new Move(sliders[i])), i * 100);
+        conway.count = moves.length;
+    
+        for (var i = conway.count - 1; i >= 0; i--) {
+            conway.move[hash(moves[i])] = moves[i];
         };
     }
 
-    // Let there be movement!
-    initialise();
+    // Kick it off
+    var init = function(){
 
+        // Set up page
+        window.onresize = Game.prototype.resize;
+
+        // Vanilla data
+        reset();
+
+        if(gl){
+            // setup GLSL program
+            vertexShader = createShaderFromScriptElement(game.context, "2d-vertex-shader");
+            fragmentShader = createShaderFromScriptElement(game.context, "2d-fragment-shader");
+            program = createProgram(game.context, [vertexShader, fragmentShader]);
+            game.context.useProgram(program);
+
+            // External Vars
+            colorLocation = game.context.getUniformLocation(program, "u_color");
+            positionLocation = game.context.getAttribLocation(program, "a_position");
+
+            // Create a buffer
+            game.context.bindBuffer(game.context.ARRAY_BUFFER, game.context.createBuffer());
+            game.context.enableVertexAttribArray(positionLocation);
+            game.context.vertexAttribPointer(positionLocation, 2, game.context.FLOAT, false, 0, 0);
+        }
+
+        // Let there be movement!
+        game.resize();
+        game.animate();
+    }
+
+
+    // Wrap it up
+    var Game = function(){
+        this.processing = false;
+    }
+
+    // Game functions alphabetized
+    Game.prototype.animate = function(move) {
+
+        // Race conditions will just render previous frame
+        game.frame();
+        game.compute();
+
+        // Won't actually ever kick off. Yet. Maybe replay?
+        if (conway.move == null){
+
+            // Render replay, maybe
+            return;
+        }
+
+        window.requestTimeout(game.animate, 150);
+    };
+
+    // Wipe the board
+    Game.prototype.clear = function(){
+        color(true);
+        rectangle(0, 0, game.width, game.height);
+        color(false);
+    }
+
+    // Figure out next move
+    Game.prototype.compute = function() {
+        if(game.processing) return;
+        game.processing = true;
+        setTimeout(function(){
+
+            // Hash maps for ease
+            // Could condense, but less readable 
+            // Could potentially use nested trees for numerical look up 
+            // x parent tree, y child tree
+            // But I'm not goig to build out that functionality for an 
+            // interpeted language that may well be slower than a native
+            // solution.
+            var empties = {};
+            var loners  = {};
+            var next    = {};
+            var dead    = {};
+            var count   = 0;
+
+            // Run through each and surrounding
+            for (var instance in conway.move) {
+                for (var j = -1; j <= 1; j++) {
+                    for (var k = -1; k <= 1; k++) {
+
+                        // Set up hash map and object
+                        // Initially used JSON.toString,
+                        // but this is much faster 
+                        // https://jsperf.com/conwaygol
+                        var value = {x:conway.move[instance].x + j,
+                            y:conway.move[instance].y + k},
+                            key   = hash(value);
+
+                        // Kick out if overpopulated
+                        if (dead[key]) continue;
+
+                        // If not in current set, check to see if neighbors 
+                        // and move to next if good
+                        if (conway.move[key] == null){
+                            if(empties[key] != null){
+                                empties[key].count += 1;
+                                if(empties[key].count == 3){
+                                    conway.move[key] = value;
+                                    next[key] = value;
+                                    next[key].count = 3;
+                                    count += 1;
+                                    delete empties[key];
+                                }
+                            }else{
+                                value.count = 1;
+                                empties[key] = value;
+                            }
+
+                        // If in current set, make sure not over populated
+                        } else if (next[key] != null){
+                            next[key].count += 1;
+                            if(next[key].count > 3){
+                                dead[key] = true;
+                                count -= 1;
+                                delete next[key];
+                            }
+
+                        // Check to see if potentially isolated
+                        } else if (loners[key] != null){
+                            loners[key].count += 1;
+                            if(loners[key].count == 2){
+                                count += 1;
+                                next[key] = loners[key];
+                                delete loners[key];
+                            }
+
+                        // Capture pieces not yet associated
+                        } else{
+                            loners[key]       = value;
+                            loners[key].count = 0;
+                        }
+                    };
+                };
+            };
+
+            // Set for next render
+            conway.move = next;
+            conway.count = count;
+            game.processing = false;
+        },0);
+    }
+
+    // Build the frame
+    Game.prototype.frame = function(){
+        //this.context.save();
+        this.clear();
+        var i = conway.move.length - 1;
+        for (var key in conway.move) {
+            this.render(conway.move[key]);
+        };
+        //this.context.restore();
+    }
+
+    // Fills the buffer with the values that define a rectangle.
+    Game.prototype.render = function (move) {
+        rectangle(game.size * move.x,game.size * move.y, game.size, game.size);
+    }
+
+    // Responsive Conway is responsive
+    Game.prototype.resize = function(event) {
+
+        // Stop distortion of exisiting resized body
+        canvas.setAttribute('height', '0px');
+        canvas.setAttribute('width' , '0px');
+
+        // Get body
+        game.width  = document.body.scrollWidth;
+        game.height = document.body.scrollHeight;
+        game.size   = max(game.height,game.width)/30;
+
+        // Set canvas to new body
+        canvas.setAttribute('height', game.height + 'px');
+        canvas.setAttribute('width', game.width + 'px');
+
+        if(gl){
+            // lookup uniforms
+            var resolutionLocation = game.context.getUniformLocation(program, "u_resolution");
+
+            // set the resolution
+            game.context.uniform2f(resolutionLocation, game.width, game.height);
+            game.context.viewport(0, 0, game.context.canvas.width, game.context.canvas.height);
+        }
+
+        // Build current frame with specs
+        game.frame()
+    }
+
+    // Not fully convinced WebGL does a better job than native Canvas
+    Game.prototype.context = getWebGLContext(canvas);
+    if(!Game.prototype.context){
+        gl = false;
+        Game.prototype.context = canvas.getContext("2d");
+        rectangle = function(x,y,width,height){
+            game.context.fillRect(x,y,width,height)
+        }
+
+        color = function(dead){
+            if(dead) game.context.fillStyle = "#202021";
+            else     game.context.fillStyle = "#282827";
+        }
+    }else{
+        gl = true;
+        rectangle = function (x,y,width,height) {
+            var x1 = x;
+            var x2 = x + width;
+            var y1 = y;
+            var y2 = y + height;
+            game.context.bufferData(game.context.ARRAY_BUFFER, new Float32Array([
+                x1, y1,
+                x2, y1,
+                x1, y2,
+                x1, y2,
+                x2, y1,
+                x2, y2]), game.context.STATIC_DRAW);
+            game.context.drawArrays(game.context.TRIANGLES, 0, 6);
+        }
+
+        color = function(dead){
+            // Set a random color.
+            if(dead) game.context.uniform4f(colorLocation, 32/300, 32/300, 33/300, 1);
+            else     game.context.uniform4f(colorLocation, 40/300, 40/300, 39/300, 1);
+        }
+    }
+
+
+    // Let's set this to actually run
+    init();
 })();

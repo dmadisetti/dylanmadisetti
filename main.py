@@ -19,7 +19,6 @@ class Handler(webapp.RequestHandler):
         requester = self.request.get("ip", os.environ["REMOTE_ADDR"]) if utils.isLocal() else os.environ["REMOTE_ADDR"]
         self.response.write(template.render(data = utils.load(DATA), extra = utils.getExtra(requester, EXTRA)))
 
-
 def Handle404(request, response, exception):
     response.headers['Content-Type'] = 'text/html'
     response.set_status(404)
