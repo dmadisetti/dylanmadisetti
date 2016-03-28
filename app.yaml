@@ -7,31 +7,46 @@ threadsafe: true
 handlers:
 - url: /images
   static_dir: static/images
+  secure: always
 - url: /styles
   static_dir: static/styles
+  secure: always
 - url: /scripts
   static_dir: static/scripts
+  secure: always
 - url: /shader
   static_dir: static/shader
+  secure: always
 - url: /resume
   static_dir: static/resumes
+  secure: always
+- url: /.well-known/acme-challenge
+  mime_type: text/plain
+  static_dir: static/challenge
+  secure: always
 - url: /google91792fe8808f769d.html
   static_files: static/google91792fe8808f769d.html
   upload: static/google91792fe8808f769d.html
+  secure: always
 - url: /sitemap.xml
   static_files: static/sitemap.xml
   upload: static/sitemap.xml
+  secure: always
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+  secure: always
 - url: /humans.txt
   static_files: static/humans.txt
   upload: static/humans.txt
+  secure: always
 - url: /BingSiteAuth.xml
   static_files: static/BingSiteAuth.xml
   upload: static/BingSiteAuth.xml
+  secure: always
 - url: /.*
   script: main.app
+  secure: always
 
 skip_files:
 - google_appengine
@@ -39,6 +54,7 @@ skip_files:
 - README.md
 - test*
 - static/shader/[^(deploy)]
+- .*\.pem
 
 libraries:
 - name: jinja2

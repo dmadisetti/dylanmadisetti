@@ -1,3 +1,5 @@
 google_appengine*
 *.pyc
-static/.well-known
+static/challenge
+cert.pem
+key.pem
