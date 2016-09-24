@@ -12,6 +12,7 @@ show_help(){
     p - ci push\n\
     c - clean\n\
     m - manual deploy\n\
+    e - letsencrypt certificate\n\
     \n\
     Chain em together as you see fit \n\
     "

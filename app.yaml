@@ -23,7 +23,6 @@ handlers:
 - url: /.well-known/acme-challenge
   mime_type: text/plain
   static_dir: static/challenge
-  secure: always
 - url: /google91792fe8808f769d.html
   static_files: static/google91792fe8808f769d.html
   upload: static/google91792fe8808f769d.html

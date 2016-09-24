@@ -25,6 +25,7 @@ Here's my nifty `toolbelt.sh`
     d - deploy
     p - ci push
     c - clean
+    e - letsencrypt certificate
 
     Chain em together as you see fit
 ```
