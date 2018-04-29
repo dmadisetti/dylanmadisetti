@@ -1,3 +1,9 @@
+html {
+
+    height: 100%;
+
+}
+
 label a,a:active,a:hover,a:visited,a:link {
 
 	color:#555;
@@ -11,6 +17,7 @@ body{
 	background-color:#394034;
 	margin:0px;
 	padding:0px;
+    height: 100%;
 
 }
 
