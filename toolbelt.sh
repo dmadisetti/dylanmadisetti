@@ -19,12 +19,15 @@ show_help(){
 }
 
 setup(){
+    pip install -I pytest==2.2.0
     pip install nosegae
     pip install webtest
     export FILE=$(curl https://storage.googleapis.com/appengine-sdks/ | grep -oP '(?<=featured/)google_appengine_[^\<]*' | head -1)
     curl -O https://storage.googleapis.com/appengine-sdks/featured/$FILE;
     unzip -q $FILE;
     mkdir -p static/challenge;
+    docker pull dxjoke/tectonic-docker
+    docker run --mount src=$TRAVIS_BUILD_DIR/static/resumes,target=/usr/src/tex,type=bind dxjoke/tectonic-docker /bin/sh -c "tectonic DylanMadisetti.tex"
 }
 
 run(){
