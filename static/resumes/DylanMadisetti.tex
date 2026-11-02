@@ -1,164 +1,126 @@
-% TODO: MIT LICENSE
-% Feel free to use this resume as a template.
+\documentclass{semantic-resume}
 
-\documentclass[letter,10pt]{dresume}
 \begin{document}
 
-\pagestyle{empty} % non-numbered pages
+\resumeheader
+  {Dylan Madisetti}
+  {Senior Software Engineer II, CoreWeave --- LLM agent systems, evaluation harnesses, and scientific computing}
+  {San Francisco, CA \enspace|\enspace \href{mailto:contact@dylanmadisetti.com}{contact@dylanmadisetti.com} \enspace|\enspace \href{https://www.dylanmadisetti.com}{dylanmadisetti.com}}
+  {\href{https://github.com/dmadisetti}{github.com/dmadisetti} \enspace|\enspace \href{https://linkedin.com/in/dylanmadisetti}{linkedin.com/in/dylanmadisetti}}
 
-% TITLE
-\dheader
+\section{Summary}
+Senior software engineer and Mechanical Engineering PhD with 8+ years building
+software across industry and research. Owns core architecture for marimo, a
+23{,}000+ star scientific notebook project, spanning reusable Python workflows,
+caching, and agent-facing correctness tooling. Background includes corresponding-author
+simulation research, NASA C++/MPI systems, Google production NLU, and auditable LLM agent harnesses.
 
-% Work
-\begin{sblock}{Work Experience}
-  \experience%
-    {8/2018.}{current}%
-    {PhD Student}%
-    {Johns Hopkins, Baltimore}
+\section{Engineering Experience}
+\resumeentry{CoreWeave}{2025--present}{Senior Software Engineer II --- marimo (acquired Oct. 2025)}
+\begin{resumeitems}
+  \item Authored \href{https://github.com/marimo-team/meps/blob/main/mep-0008.md}{MEP 0008}
+    and implemented reusable-notebook architecture spanning top-level-function
+    serialization, setup-cell protections, and notebook embedding.
+  \item Designed and implemented marimo's caching stack, including persistent and
+    in-memory decorators, cache introspection, custom serialization, cell-level
+    cached execution, and signed cache bundles.
+  \item Shipped \texttt{marimo check}, correctness tooling built for humans and coding
+    agents that emits machine-readable diagnostics; drove it from public design
+    through configuration and production rules.
+  \item Authored the specification and security boundaries and built a proof of
+    concept for \href{https://molab.marimo.io}{mo lab}'s sandboxed execution on
+    CoreWeave Cloud; the product launched in public preview with GPU-backed sessions.
+  \item Built a distributed-compute DAG prototype for marimo notebooks during a
+    CoreWeave hackathon.
+  \item Serve as a core maintainer of a 23{,}000+ star project (Nov. 2026): translate
+    external user reports into shipped caching and pytest fixes, review contributors,
+    publish releases, and mentor interns, junior colleagues, and SciPy participants.
+\end{resumeitems}
 
-    \item Actively contributed towards grant proposal writing.
-    \item Spearheading investigations into simulating partial dislocation in FCC
-      metals to capture previously undescribed phenomenon in super alloy
-      deformation.
-    \item Developing Neural Nets as feature extractors for materials
-      characterization.
-    \item Bringing Material Science into the big data domain.
-  \endexperience
+\section{Agent Systems \& Evaluation}
+\resumeentry{Cowboy}{2026--present}{Creator and maintainer}
+\begin{resumeitems}
+  \item Designed and open-sourced a Rust/Python/Nix runtime for persistent LLM agents
+    with sandbox and controlled run-as boundaries, approval-gated effects,
+    asynchronous message bridges, and audit-oriented execution records.
+  \item Built and ran a prespecified four-task Harbor harness-validity calibration on
+    Terminal-Bench 2.1 (1/4 task pass; 4/4 valid; zero infrastructure exclusions),
+    validating a larger model-output cap and isolating a remaining runtime timeout.
+\end{resumeitems}
 
-  \experience%
-    {7/2017.}{7/2018}%
-    {Software Engineer}%
-    {Google, Mountain View}
+\resumeentry{Google --- Mountain View}{Jul 2017--Jul 2018}{Software Engineer, Natural Language Understanding}
+\begin{resumeitems}
+  \item Developed and evaluated debiasing methods for word, sentence, and
+    semantic-vector representations on Google's NLU research team.
+  \item Developed components of a multi-tower semantic-model framework and trained
+    TensorFlow graphs for deployment at scale.
+  \item Built massively parallel C++/MapReduce analysis pipelines and
+    hyperparameter-autotuning procedures for black-box optimization.
+\end{resumeitems}
 
-    \item Worked on Ray Kurzweil's team for Natural Language Understanding.
-    \item Pioneered method for debiasing word, sentence and semantic vectors.
-    \item Contributed towards internal framework for multi-tower semantic models
-      (Universal Encoder).
-    \item Worked with high dimension semantic location to extract valuable
-      market information.
-    \item Build massively parallel data processing pipelines for Google scale
-      analysis (C++, MapReduce).
-    \item Created and train machine learning Tensorflow graphs to deploy at
-      scale.
-    \item Created hyperparameter autotuning procedures for blackbox
-      optimization.
-  \endexperience
+\resumeentry{NASA Langley Research Center}{Jun 2016--Aug 2016}{Research and Development Intern}
+\begin{resumeitems}
+  \item Developed custom C++ Distributed Point Source Method simulation software
+    for massively parallel MPI clusters.
+  \item Built a laser/vibrometer system for guided-wave nondestructive evaluation
+    of damaged composites and automated experimental equipment with C\# serial I/O.
+\end{resumeitems}
 
-  \experience%
-    {1/2015.}{5/2017}%
-    {Undergraduate Researcher}%
-    {Integrated Material Assessment \& Predictive Simulation Laboratory (USC)}
+\section{Earlier Software Experience}
+\small
+Software Developer, Equiscript and BoomTown (2012--2013); Co-founder / Software
+Developer, CloudCollege (2014--2015): shipped a beta-to-release product, ran user
+research, and helped secure \$50{,}000 in seed funding.
+\normalsize
 
-    \item Developed code for \$775,072 NASA grant (15540-FD03).
-    \item Prototyped CAD-to-pointcloud meshing procedure specific for under
-      independently awarded \$3,000 SURF grant.
-    \item Integrated CUDA GPU processing in point-cloud meshing procedures.
-    \item Designed a cochlea inspired piezoelectric energy harvester from
-      co-authored \$3,000 Magellan Grant.
-    \item Worked with acousto-elastic metamaterials- leading to publication.
-  \endexperience
 
-  \experience%
-    {6/2016.}{8/2016.}%
-    {Research and Development Intern}%
-    {NASA Langley Research Center}
 
-      \item Developing custom DPSML simulation software (C++) to run on
-        massively parallel super computer (using MPI) clusters.
-      \item Constructed laser excitation system to create guided waves in
-        damaged composites for NDE observation.
-      \item Automated operated experimental setup with vibrometer and laser
-        using IO serial commands in C\#.
-  \endexperience
+\newpage
+\section{Scientific Research}
+\resumeentry{Johns Hopkins University}{2018--2026}{PhD Researcher; co-advised by Christopher D. Stiles, JHU APL}
+\begin{resumeitems}
+  \item Developed discrete-dislocation-dynamics and GPU-accelerated ray-tracing
+    workflows to predict XRD peak broadening in additively manufactured 316L steel;
+    corresponding author in \emph{Journal of the Mechanics and Physics of Solids}.
+  \item Built \texttt{pd3}, an open-source C++/Python parallel dislocation-dynamics
+    framework, and applied ML to reconstruct dislocation structures from XRD and 3D
+    simulations; presented results at MRS and TMS.
+  \item Developed hyperspectral characterization analysis with JHU APL for in-situ
+    monitoring of laser powder-bed-fusion builds.
+  \item NSF Graduate Research Fellow and teaching assistant for Machine Learning for
+    Mechanical Engineers.
+\end{resumeitems}
 
-  \experience%
-    {5/2014.}{12/2015.}%
-    {Co-founder/ Software Developer}%
-    {CloudCollege PBC.}
+\resumeentry{Integrated Material Assessment \& Predictive Simulation Laboratory, USC}{2015--2017}{Undergraduate Researcher}
+\begin{resumeitems}
+  \item Developed CAD discretization and CUDA-accelerated point-cloud meshing for
+    distributed-point-source and peridynamic simulations; also researched energy
+    harvesting and acousto-elastic metamaterials, leading to a publication.
+\end{resumeitems}
 
-      \item Collaborated to build the CloudCollege product which has secured
-        \$50,000 in seed funding.
-      \item Expanded and improved an existing beta product into a consumer-ready release.
-      \item Coordinated business goals and product development.
-      \item Ran user research studies in order to inform product direction.
-  \endexperience
+\section{Selected Publications and Talks}
+\small
+\begin{resumeitems}
+  \item Madisetti et al. ``Computational investigation into XRD peak broadening
+    effects with discrete dislocation dynamics.'' \emph{JMPS} 196 (2025),
+    corresponding author.
+  \item Lavenstein et al. ``The heterogeneity of persistent slip band nucleation
+    and evolution in metals at the micrometer scale.'' \emph{Science} 370 (2020).
+  \item Madisetti et al. ``Hash all the things: Caching for fast notebook restarts.''
+    \emph{Proceedings of SciPy 2026}; presented ``Python Notebooks Are Better Now''
+    at PyAI 2026.
+\end{resumeitems}
+\normalsize
 
-  \clearpage\\
+\section{Technical Strengths}
+\small
+\resumeline{Languages \& systems}{Python, C++, Rust, C\#, SQL; Nix, WASM, MPI, CUDA, MapReduce, TensorFlow}
+\resumeline{Scientific computing}{Discrete dislocation dynamics, GPU ray tracing, XRD, DPSM, peridynamics, CAD meshing}
+\resumeline{Agent systems}{LLM harnesses, evaluations, sandboxing, approval gates, message bridges, distributed DAGs}
+\normalsize
 
-  \experience%
-    {9/2013.}{5/2016.}%
-    {Undergraduate Researcher}%
-    {Advanced Manufacturing Research Laboratory (USC)}
-
-      \item Fabricated test molds for new method of spin mold processing using 3D printing.
-      \item Used circuit boards and Arduinos to create controllable environment
-        for spin processing.
-      \item Wrote Ruby modules for Sketchup to help with design process.
-  \endexperience
-
-  \experience%
-    {3/2013.}{9/2013.}%
-    {Software Developer}%
-    {BoomTown LLC.}
-
-    \item Full time employee with a competitive salary at the age of 18.
-    \item Extended and contributed to C\# API for over 600 frontend websites.
-    \item Managed front-end websites in PHP (Later Hack as we experimented with
-      HHVM), Less and Coffeescript.
-  \endexperience
-
-  \experience%
-    {9/2012.}{3/2013.}%
-    {Software Developer}%
-    {Equiscript LLC.}
-
-      \item Managed large amounts of business data between Salesforce platform,
-        dedicated SQL servers and 3rd party stake holders.
-      \item Wrote workflows and entire processes in Salesforce’s Apex (very
-        similar to Java).
-      \item Worked with C\#’s Linq library for detailed data processes.
-      \item Developed in SQL, and Python automated data processing procedures.
-      \item Provided elastic instance system administration on Amazon’s EC2
-        platform, and Rackspace.
-  \endexperience
-
-\end{sblock}
-
-%Section: Pubs
-\begin{sblock}{Publications}
-  \pub%
-    {9/2016.}%
-    {Journal of Intelligent Materials Systems and Structures}%
-    {A process to Scavenge energy at low acoustic frequencies ($<$ KHz) with
-    controlled geometric configurations (Ahmed, Madisetti, Banerjee)}
-\end{sblock}
-
-%Section: Honors
-\hblock{Honors}
-  \h%
-    {2018.}{2nd Place HopHacks (MLH)}%
-    {2017.}{NSF GRFP}
-
-  \h%
-    {2017.}{USC President of ASME}%
-    {2017.}{Outstanding Senior Award}
-
-  \h%
-    {2017.}{USC Cyber Security Executive Staff}%
-    {2016.}{SURF Grant Recipient}
-
-  \h%
-    {2015.}{Goldwater Fellowship Finalist}%
-    {2015.}{Magellan Grant Recipient}
-
-  \h%
-    {2015.}{NSPE Foundation Scholarship}%
-    {2014.}{Phi Beta Kappa Freshman Award}
-
-  \h%
-    {2015}{Tau Beta Pi}%
-    {}{}
-
-\endhblock
+\section{Education}
+\resumeline{Johns Hopkins University}{PhD, Mechanical Engineering, conferred 2026; NSF GRFP}
+\resumeline{University of South Carolina}{BS, Mechanical Engineering, 2017; minors in Mathematics and Computer Science}
 
 \end{document}
